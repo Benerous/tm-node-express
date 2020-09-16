@@ -1,0 +1,19 @@
+{
+  "name": "osf-academy-backend-starter-kit",
+  "version": "1.0.0",
+  "description": "OSF Academy Starter Kit Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app/index.js"
+  },
+  "author": "Bohdan Vyshynskyi",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "joi": "^17.2.1",
+    "mongoose": "^5.10.5",
+    "nodemon": "^2.0.4"
+  }
+}
