@@ -18,16 +18,19 @@ function addTodoItem(req) {
 }
 
 function deleteTodoItem(req) {
-    const id = req.query.id;
+    const id = req.query.id || req.body.id;
     return id;
 }
 
 async function changeTodoItem(req) {
-    const id = req.query.id;
-    const done = req.query.done || !((await TodoItem.findById(id))).done;
+    const id = req.query.id || req.body.id;
+    let compliteness = req.query.done || req.body.done;
+    if (compliteness === undefined) {
+        compliteness = !((await TodoItem.findById(id))).done;
+    }
     return {
         id: id,
-        done: done
+        done: compliteness
     }
 }
 

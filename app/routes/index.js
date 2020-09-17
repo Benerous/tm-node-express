@@ -4,10 +4,16 @@ module.exports = function(app) {
 
   app.use('/api/todolist', todoRouter);
 
+  app.use((req, res, next) => {
+    let err = new Error('Invalid API Request');
+    err.status = 404;
+    next(err);
+  });
+
   app.use((err, req, res, next) => {
-    req.statusCode = err.statusCode || 500;
-    res.status(500).send({
-      message: err.message || 'Invalid API call',
+    req.statusCode = err.status || 500;
+    res.status(req.statusCode).send({
+      message: err.message || err.errors,
       statusCode: req.statusCode
     });
   });
