@@ -18,6 +18,6 @@ routes
     .put('/', [
         checkBodyAndQuery('id').isString().isLength({min:24, max:24}),
         checkBodyAndQuery('done').optional().isBoolean()
-      ], todoController.changeTodoItem)
+      ], todoController.changeTodoItem);
 
 module.exports = routes;

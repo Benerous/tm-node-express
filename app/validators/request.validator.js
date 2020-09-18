@@ -6,6 +6,6 @@ const reqValidationHandler = (req) => {
     if (!errors.isEmpty()) {
         return { errors: `${errorObject.msg} '${errorObject.param}' in ${errorObject.location}` };
     }
-}
+};
 
 module.exports = reqValidationHandler;

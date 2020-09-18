@@ -16,7 +16,7 @@ async function getTodoList(req, res, next){
     } catch(err) {
         next(err);
     }
-}
+};
 
 async function addTodoItem(req, res, next){
     const reqNotValidated = requestValidator(req);
@@ -31,7 +31,7 @@ async function addTodoItem(req, res, next){
     } catch(err) {
         next(err);
     }
-}
+};
 
 async function deleteTodoItem(req, res, next){
     const reqNotValidated = requestValidator(req);
@@ -50,7 +50,7 @@ async function deleteTodoItem(req, res, next){
     } catch(err) {
         next(err);
     }
-}
+};
 
 async function changeTodoItem(req, res, next){
     const reqNotValidated = requestValidator(req);
@@ -69,12 +69,12 @@ async function changeTodoItem(req, res, next){
     } catch(err) {
         next(err);
     }
-}
+};
 
 module.exports = {
     getTodoList: getTodoList,
     addTodoItem: addTodoItem,
     deleteTodoItem: deleteTodoItem,
     changeTodoItem: changeTodoItem
-  }
+};
   

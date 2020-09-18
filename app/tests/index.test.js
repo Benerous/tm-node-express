@@ -183,7 +183,7 @@ describe("Updating to-do item without 'done' field", () => {
     });
 });
 
-describe("Updating to-do item that not exist", async () => {
+describe("Updating to-do item that not exist", () => {
     const url = "/api/todolist/";
     test("It should response with message 'There is no such to-do item in list ;('", done => {
         request(app)
