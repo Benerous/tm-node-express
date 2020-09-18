@@ -1,11 +1,14 @@
 {
-  "name": "osf-academy-backend-starter-kit",
+  "name": "tm-node-express",
   "version": "1.0.0",
-  "description": "OSF Academy Starter Kit Project",
+  "description": "REST API for To-do Application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --runInBand --verbose --coverage --forceExit --detectOpenHandles",
     "start": "nodemon app/index.js"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "author": "Bohdan Vyshynskyi",
   "license": "ISC",
@@ -15,6 +18,11 @@
     "express-validator": "^6.6.1",
     "joi": "^17.2.1",
     "mongoose": "^5.10.5",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "uniqid": "^5.2.0"
+  },
+  "devDependencies": {
+    "jest": "^26.4.2",
+    "supertest": "^4.0.2"
   }
 }

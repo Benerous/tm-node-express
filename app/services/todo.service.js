@@ -1,10 +1,9 @@
-const e = require('express');
 const TodoItem = require('../models/todo.model');
 
 async function getTodoList() {
     const todoList = await TodoItem.find();
     return todoList.length ? todoList : {
-        message: "There is nothing to be done ;("
+        message: "There is nothing to be found ;("
     };
 }
 

@@ -27,7 +27,7 @@ async function addTodoItem(req, res, next){
         const returnFromService = await modelValidator(todoService.addTodoItem(req, res, next));
         const todoItem = new TodoItem(returnFromService);
         const newItem = await todoItem.save()
-        return res.status(200).send(newItem);
+        return res.status(201).send(newItem);
     } catch(err) {
         next(err);
     }
@@ -41,6 +41,10 @@ async function deleteTodoItem(req, res, next){
     try {
         const returnFromService = todoService.deleteTodoItem(req);
         const todoItem = await TodoItem.findById(returnFromService);
+        if (!todoItem) {
+            const err = new Error("There is no such to-do item in list ;(");
+            return next(err);
+        }
         await todoItem.remove();
         return res.status(200).send(await TodoItem.find());
     } catch(err) {
@@ -57,11 +61,12 @@ async function changeTodoItem(req, res, next){
         const returnFromService = await todoService.changeTodoItem(req);
         const { id, done } = returnFromService;
         const updatedItem = await TodoItem.findByIdAndUpdate(id, { "done": done }, { new: true });
+        if (!updatedItem) {
+            const err = new Error("There is no such to-do item in list ;(");
+            return next(err);
+        }
         return res.status(200).send(updatedItem);
     } catch(err) {
-        if (err.message === "Cannot read property 'done' of null") {
-            err.message = "There is no such to-do item in list ;("
-        }
         next(err);
     }
 }

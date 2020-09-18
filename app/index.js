@@ -18,8 +18,10 @@ mongoose
   });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Our app is running on port ${PORT}`);
 });
+
+if (app.settings.env === 'test') server.close();
 
 module.exports = app;
